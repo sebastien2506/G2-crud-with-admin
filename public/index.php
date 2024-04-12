@@ -14,3 +14,6 @@ try{
 }catch(Exception $e){
     die($e->getMessage());
 }
+
+// chargement du contrôleur publique
+require_once "../controller/publicController.php";
