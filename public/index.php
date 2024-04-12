@@ -1,4 +1,6 @@
 <?php
+// ouverture / continuation de session
+session_start();
 
 // chargement du fichier de configuration
 require_once('../config.php');
@@ -15,5 +17,15 @@ try{
     die($e->getMessage());
 }
 
-// chargement du contrôleur publique
-require_once "../controller/publicController.php";
+// si on est connecté
+if(isset($_SESSION['myID']) && $_SESSION['myID'] == session_id()){
+    // chargement du contrôleur privé
+    require_once "../controller/privateController.php";
+    
+}else{
+
+    // chargement du contrôleur publique
+    require_once "../controller/publicController.php";
+}
+
+$connect = null;
