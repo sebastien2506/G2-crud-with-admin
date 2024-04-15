@@ -1,6 +1,5 @@
 <?php
-// chargement de dépendances qui seraient utiles que pour la partie publique
-require_once "../model/administratorModel.php";
+
 
 // si on essaie de se connecter
 if(isset($_GET['connect'])){
@@ -12,14 +11,9 @@ if(isset($_GET['connect'])){
         $connection = administratorConnect($connect,$_POST['username'],$_POST['passwd']);
 
 
-        /*
-
-        ON EST ICI
-
-        */
-
         if($connection === true){
             header("Location: ./");
+            die();
         }
 
     }

@@ -3,7 +3,9 @@
 session_start();
 
 // chargement du fichier de configuration
-require_once('../config.php');
+require_once '../config.php';
+// chargement de dépendances
+require_once "../model/administratorModel.php";
 
 // Connexion
 try{
@@ -11,7 +13,7 @@ try{
         DB_DRIVER.":host=".DB_HOST.";port=".DB_PORT.";dbname=".DB_NAME.";charset=".DB_CHARSET,
         DB_LOGIN,
         DB_MDP,
-        [PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC]
+        [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]
 );
 }catch(Exception $e){
     die($e->getMessage());
