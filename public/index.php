@@ -6,6 +6,7 @@ session_start();
 require_once '../config.php';
 // chargement de dépendances
 require_once "../model/administratorModel.php";
+require_once "../model/ourdatasModel.php";
 
 // Connexion
 try{
