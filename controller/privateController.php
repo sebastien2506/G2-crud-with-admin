@@ -19,7 +19,14 @@ if(isset($_GET['insert'])){
         $longitude = (float) $_POST['longitude'];
 
         // si on récupère true, à cette fonction, il faut rédiriger vers l'accueil de l'admin, sinon affichage d'une erreur
-        addOurdatas($connect,$title,$oudesc,$latitude,$longitude);
+        $insert = addOurdatas($connect,$title,$oudesc,$latitude,$longitude);
+
+        if($insert===true):
+            header("Location: ./?zut"); 
+            exit();
+        else:
+            $error = $insert;
+        endif;
     }
 
     // appel de la vue d'insertion
@@ -30,6 +37,10 @@ if(isset($_GET['insert'])){
 
 // on charge toutes les données
 $ourDatas = getAllOurdatas($connect);
+
+// si insertion page précédente
+
+
 // pas encore de données
 if(is_string($ourDatas)) $message = $ourDatas;
 
