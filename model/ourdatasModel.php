@@ -1,8 +1,10 @@
 <?php
 // Sélectionnez toutes les données
-function getAllOurdatas(PDO $db): array|string
+function getAllOurdatas(PDO $db, $order = "DESC"): array|string
 {
-    $sql ="SELECT * FROM ourdatas ORDER BY idourdatas DESC;";
+    // l'ordre ne peut être que ASC ou DESC
+    $order = (in_array($order,['DESC','ASC'],true))? $order: "DESC";
+    $sql ="SELECT * FROM ourdatas ORDER BY idourdatas $order;";
     try{
         $query = $db->query($sql);
         if($query->rowCount()===0) return "Pas encore de datas";
@@ -13,6 +15,25 @@ function getAllOurdatas(PDO $db): array|string
     }catch(Exception $e){
         return ['error'=>$e->getMessage()];
     }
+}
+
+// récupération d'une data via son ID
+function getOneOurdatasByID(PDO $connexion, int $id): array|string
+{
+    // création de la requête
+    $sql = "SELECT * FROM `ourdatas` WHERE `idourdatas` = ? ";
+    // préparation de la requête (car entrée utilisateur)
+    $prepare = $connexion->prepare($sql);
+    try {
+        $prepare->execute([$id]);
+        if($prepare->rowCount()===0) return "Impossible de modifier cet article";
+        $result = $prepare->fetch();
+        $prepare->closeCursor();
+        return $result;
+    } catch (Exception $e) {
+        return $e->getMessage();
+    }
+
 }
 
 // ajoutez avec une requête préparée la nouvelle data

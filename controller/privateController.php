@@ -3,6 +3,19 @@
 // si on essaye de se déconnecter (administratorDisconnect nous redirige vers l'accueil)
 if(isset($_GET['disconnect'])) administratorDisconnect();
 
+// modification
+if(isset($_GET['update'])&&ctype_digit($_GET['update'])){
+    // si le formulaire est envoyé
+
+    $id = (int) $_GET['update'];
+    // Appel de la fonction qui charge une donnée par son id
+    $update = getOneOurdatasByID($connect,$id);
+    var_dump($update);
+    // appel de la vue d'update
+    require "../view/private/admin.update.html.php";
+}
+
+// insertion
 if(isset($_GET['insert'])){
 
     // si le formulaire est envoyé
@@ -31,14 +44,13 @@ if(isset($_GET['insert'])){
 
     // appel de la vue d'insertion
     require "../view/private/admin.insert.html.php";
-    var_dump($_POST);
+    //var_dump($_POST);
     exit();
 }
 
 // on charge toutes les données
 $ourDatas = getAllOurdatas($connect);
 
-// si insertion page précédente
 
 
 // pas encore de données

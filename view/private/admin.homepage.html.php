@@ -47,7 +47,7 @@
                 <td><?=$item['ourdesc']?></td>
                 <td><?=$item['latitude']?></td>
                 <td><?=$item['longitude']?></td>
-                <td><img src="img/update.png" width="32" height="32" alt="update" /></td>
+                <td><a href="?update=<?=$item['idourdatas']?>"><img src="img/update.png" width="32" height="32" alt="update" /></a></td>
                 <td><img src="img/delete.png" width="32" height="32" alt="delete" /></td>
             </tr>
                 <?php endforeach; ?>
