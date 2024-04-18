@@ -41,8 +41,8 @@
                             <td><?=$crud["ourdesc"]?></td>
                             <td><?=$crud["latitude"]?></td>
                             <td><?=$crud["longitude"]?></td>
-                            <td><a href="?update=<?=$crud["idourdatas"]?>"><img src="img/update.png" width="32" height="32" alt="update" /></a></td>
-                            <td><a href="?delete=<?=$crud["idourdatas"]?>"><img src="img/delete.png" width="32" height="32" alt="delete" /></a></td>
+                            <td><a href="?update=<?=$crud["idourdatas"]?>"><img src="img/update.png" width="25" height="25" alt="update" /></a></td>
+                            <td><a href="?delete=<?=$crud["idourdatas"]?>"><img src="img/delete.png" width="25" height="25" alt="delete" /></a></td>
                             </tr>
                             <?php endforeach; ?>
                     </table>
