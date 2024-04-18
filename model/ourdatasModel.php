@@ -23,5 +23,19 @@ function addOurdatas(PDO $db,
                     float $longitude
                     ) : bool|string
 {
-    return true;
+    // création d'une variable contenant la requête SQL préparée avec les ?
+    $sql = "INSERT INTO `ourdatas` (`title`, `ourdesc`, `latitude`,`longitude`) 
+            VALUES(?,?,?,?);";
+    // préparation de la requête
+    $prepare = $db->prepare($sql);
+
+    try{
+        $prepare->execute([$titre, $description, $latitude, $longitude]);
+        $prepare->closeCursor();
+        return true;
+    }catch(Exception $e){
+        return $e->getMessage();
+    }
+
+    
 }
