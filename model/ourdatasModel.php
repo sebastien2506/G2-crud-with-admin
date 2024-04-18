@@ -36,6 +36,21 @@ function getOneOurdatasByID(PDO $connexion, int $id): array|string
 
 }
 
+// Modification d'une data via son ID
+function updateOurdatasByID(
+                            PDO $db,
+                            int $idourdatas,
+                            string $titre, 
+                            string $description, 
+                            float $latitude,
+                            float $longitude 
+                            ) 
+        : bool|string
+{
+    return false;
+}
+
+
 // ajoutez avec une requête préparée la nouvelle data
 function addOurdatas(PDO $db, 
                     string $titre, 
