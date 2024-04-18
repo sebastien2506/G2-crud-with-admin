@@ -5,12 +5,28 @@ if(isset($_GET['disconnect'])) administratorDisconnect();
 
 // modification
 if(isset($_GET['update'])&&ctype_digit($_GET['update'])){
-    // si le formulaire est envoyé
 
     $id = (int) $_GET['update'];
+
+    // si le formulaire est envoyé
+    if(isset(
+        $_POST['idourdatas'],
+        $_POST['title'],
+        $_POST['ourdesc'],
+        $_POST['latitude'],
+        $_POST['longitude']
+    )){
+        $idourdatas = (int) $_POST['idourdatas'];
+        $title = htmlspecialchars(strip_tags(trim($_POST['title'])),ENT_QUOTES);
+        $ourdesc = htmlspecialchars(trim($_POST['ourdesc']),ENT_QUOTES);
+        $latitude = (float) $_POST['latitude'];
+        $logintude = (float) $_POST['longitude'];
+
+    }
+    
     // Appel de la fonction qui charge une donnée par son id
     $update = getOneOurdatasByID($connect,$id);
-    var_dump($update);
+    var_dump($update,$_POST);
     // appel de la vue d'update
     require "../view/private/admin.update.html.php";
 }
