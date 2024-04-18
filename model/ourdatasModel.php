@@ -23,5 +23,14 @@ function addOurdatas(PDO $db,
                     float $longitude
                     ) : bool|string
 {
-    return true;
+    $connect = "INSERT INTO ourdatas(title,ourdesc,latitude,longitude) VALUES (?,?,?,?)";
+     try {
+        // on exécute la requête
+        $p = $db->prepare($connect);
+        $p->execute([$titre,$description,$latitude,$longitude]);
+        return true;
+    } catch (Exception $e) {
+        // sinon, on renvoie le message d'erreur
+        return $e->getMessage();
+                    }
 }

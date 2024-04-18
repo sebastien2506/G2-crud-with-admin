@@ -14,12 +14,15 @@ if(isset($_GET['insert'])){
     )){
 
         $title = strip_tags(trim($_POST['title']));
-        $oudesc = trim($_POST['ourdesc']);
+        $ourdesc = trim($_POST['ourdesc']);
         $latitude = (float) $_POST['latitude'];
         $longitude = (float) $_POST['longitude'];
 
         // si on récupère true, à cette fonction, il faut rédiriger vers l'accueil de l'admin, sinon affichage d'une erreur
-        addOurdatas($connect,$title,$oudesc,$latitude,$longitude);
+        addOurdatas($connect,$title,$ourdesc,$latitude,$longitude);
+        header("Location: ./");
+        
+        die();
     }
 
     // appel de la vue d'insertion
