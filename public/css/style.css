@@ -1,0 +1,38 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url(blu.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.terre{
+    position: relative;
+    width: 450px;
+    height: 450px;
+    border-radius: 50%;
+    background: transparent url(earth.png);
+    background-size: cover;
+    box-shadow: inset 0px -20px 50px 10px #24097c80,
+    0px 0px 30px 6px #4500f370;
+    transform-style: preserve-3d;
+    transform: rotate(20deg);
+    animation: rotate 15s linear infinite;
+}
+
+@keyframes rotate{
+    0%{
+        background-position: 0 0;
+    }
+    100%{
+        background-position: 530px;
+    }
+}
+
+
